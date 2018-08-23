@@ -1,7 +1,9 @@
 package com.frank.springlearning.controller;
 
 import com.frank.springlearning.domain.GenderEnum;
+import com.frank.springlearning.service.RegistryService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class HealthController {
 
+    @Autowired
+    private RegistryService registryService;
+
     @RequestMapping("/check")
     public String check(){
         log.info(">>> 【check】spring-learning is healthy! >>>");
@@ -25,4 +30,5 @@ public class HealthController {
         log.info("convert type = {}, name = {}",type,name);
         return "success";
     }
+
 }

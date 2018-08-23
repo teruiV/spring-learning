@@ -1,9 +1,7 @@
 package com.frank.springlearning.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.frank.springlearning.service.InitService;
-import com.frank.springlearning.service.LogService;
-import com.frank.springlearning.service.RegistryService;
+import com.frank.springlearning.service.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +23,12 @@ public class LogController {
 
     @Autowired
     private InitService initService;
+
+    @Autowired
+    private AnnotationService annotationService;
+
+    @Autowired
+    private ContainerService containerService;
 
     @RequestMapping("/node/online")
     public String onlien(){
@@ -58,6 +62,16 @@ public class LogController {
     @RequestMapping("/init")
     public String init(){
         return initService.getFilterPhone();
+    }
+
+    @RequestMapping("/annotation")
+    public String annotation(){
+        return annotationService.annotion();
+    }
+
+    @RequestMapping("/container")
+    public String container(){
+        return containerService.echo();
     }
 
 
