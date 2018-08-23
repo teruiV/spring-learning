@@ -2,6 +2,8 @@ package com.frank.springlearning;
 
 import com.frank.springlearning.domain.Role;
 import com.frank.springlearning.domain.User;
+import com.frank.springlearning.service.LogService;
+import com.frank.springlearning.service.RegistryService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -39,6 +41,12 @@ public class MockApiTest {
 
     @Mock
     private Role role;
+
+    @Spy
+    private LogService logService;
+
+    @InjectMocks
+    private RegistryService registryService;
 
     @Test
     @Description("mock某个类的方法")
@@ -153,5 +161,14 @@ public class MockApiTest {
     public void test_011(){
         when(role.getRoleName()).thenReturn("【mock】admin");
         log.info("user info = {}",user.getUserInfo());
+    }
+
+    @Test
+    @Description("mock spring service层的内部依赖")
+    public void test_012(){
+        when(logService.createRoute(anyString())).thenReturn("[mock] create route");
+        registryService.mock("测试");
+        log.info(">>>>>>>>>>> 可否调用正常的方法 >>>>>>>>>>>>\n");
+        registryService.registry();
     }
 }
