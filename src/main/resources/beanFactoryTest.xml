@@ -10,6 +10,9 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"
 >
     <bean id="myTestBean" class="com.frank.springlearning.domain.MyTestBean"/>
-    <bean id="awareService" class="com.frank.springlearning.service.AwareService"/>
+    <bean id="awareService" class="com.frank.springlearning.service.AwareService">
+        <constructor-arg ref="myTestBean"/>
+    </bean>
+    <bean id = "process" class="com.frank.springlearning.domain.Process"/>
     <!--<bean id="converters" class="com.frank.springlearning.convert.StringToGenderEnumConverter"/>-->
 </beans>

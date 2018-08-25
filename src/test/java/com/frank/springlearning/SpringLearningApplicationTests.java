@@ -2,13 +2,13 @@ package com.frank.springlearning;
 
 
 import com.frank.springlearning.domain.MyTestBean;
-import com.frank.springlearning.service.AwareService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -34,14 +34,6 @@ public class SpringLearningApplicationTests {
     @Test
     public void test_002(){
         ApplicationContext ctx = new ClassPathXmlApplicationContext("beanFactoryTest.xml");
-        AwareService awareService = (AwareService)ctx.getBean("awareService");
-        awareService.testAware();
+        ((AbstractApplicationContext) ctx).registerShutdownHook();
     }
-//
-//
-//    @Test
-//    public void test_002(){
-//        Integer num = 3;
-//        System.out.println(num.equals(3));
-//    }
 }
