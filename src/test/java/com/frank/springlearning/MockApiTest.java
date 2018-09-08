@@ -5,6 +5,7 @@ import com.frank.springlearning.domain.User;
 import com.frank.springlearning.service.LogService;
 import com.frank.springlearning.service.RegistryService;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -97,6 +98,7 @@ public class MockApiTest {
     }
 
     @Test
+    @Ignore
     @Description("调用某个mock方法时，抛出异常")
     public void test_005(){
         doThrow(new RuntimeException("void method throw exception")).when(mockList).clear();
