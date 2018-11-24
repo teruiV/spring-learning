@@ -66,4 +66,9 @@ public class Apply {
         apply.setApplyName(name);
         return apply;
     }
+
+    public static void main(String[] args) {
+//        boolean status;
+//        System.out.println(status);
+    }
 }

@@ -1,6 +1,7 @@
 package com.frank.springlearning.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.frank.springlearning.factory.BeanFactoryAwareDemo;
 import com.frank.springlearning.service.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,9 @@ public class LogController {
 
     @Autowired
     private ContainerService containerService;
+
+    @Autowired
+    private BeanFactoryAwareDemo beanFactoryAwareDemo;
 
     @RequestMapping("/node/online")
     public String onlien(){
@@ -74,5 +78,9 @@ public class LogController {
         return containerService.echo();
     }
 
-
+    @RequestMapping("/beanFactoryAware")
+    public String beanFactoryAware(){
+        beanFactoryAwareDemo.println();
+        return "success";
+    }
 }

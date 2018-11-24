@@ -1,5 +1,6 @@
 package com.frank.springlearning.controller;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +15,14 @@ import java.util.Date;
 @RestController
 @Validated
 public class HelloController {
+    @Value("${systemName}")
+    public String systemName;
+
+    @RequestMapping("/value")
+    public String value(){
+        return systemName;
+    }
+
     @RequestMapping(value = "/hello")
     public String hello(@RequestParam String name){
         return "hello " + name;

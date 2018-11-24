@@ -3,15 +3,12 @@ package com.frank.springlearning;
 import com.frank.springlearning.service.LogService;
 import com.frank.springlearning.service.RegistryService;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import static org.mockito.Mockito.when;
 
 /**
  * @author jianweilin
@@ -31,17 +28,16 @@ public class LogTest {
     private RegistryService registryService;
 
 
-
 //    @Before
 //    public void init() {
 //        logService = mock(LogService.class);
 //        when(logService.createRoute("测试")).thenReturn("mock create route");
 //        registryService = new RegistryService(logService);
 //    }
-
-    @Test
-    public void test_001() {
-        when(logService.createRoute("测试")).thenReturn("mock create route");
-        registryService.mock("测试");
-    }
+//
+//    @Test
+//    public void test_001() {
+//        when(logService.createRoute("测试")).thenReturn("mock create route");
+//        registryService.mock("测试");
+//    }
 }

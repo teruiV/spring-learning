@@ -1,5 +1,6 @@
 package com.frank.springlearning.http;
 
+import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
 
 import java.io.IOException;
@@ -8,9 +9,33 @@ import java.io.IOException;
  * @author jianweilin
  * @date 2018/7/31
  */
+@Slf4j
 public class HttpDemo {
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
+    public static void getEndPoints(String name){
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder().url("http://localhost:5015/v1/index/"+name).get().build();
+        log.info("thread: {} url: {}", Thread.currentThread().getName(),request.url().toString());
+        try {
+            Response response = client.newCall(request).execute();
+            System.out.println("response = " + response.body().string());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void getEndPoints2(){
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder().url("http://localhost:5015/v1/index2").get().build();
+        log.info("thread: {} url: {}", Thread.currentThread().getName(),request.url().toString());
+        try {
+            Response response = client.newCall(request).execute();
+            System.out.println("response = " + response.body().string());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     public static void main(String[] args) {
         String json = "{\n" +
                 "\t\"comment\": \"\",\n" +
