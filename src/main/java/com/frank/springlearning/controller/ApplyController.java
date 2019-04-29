@@ -40,7 +40,7 @@ public class ApplyController {
     @RequestMapping(value = "/apply/isAdmin", method = RequestMethod.GET)
     public ApiResponse isAdmin(@RequestParam String mail) {
         printHeader();
-        List<String> mailList = Arrays.asList("jianweilin@imdada.cn", "tanglijuan@imdada.cn");
+        List<String> mailList = Arrays.asList();
         return ApiResponse.success(mailList.contains(mail) ? 1 : 0);
     }
 
